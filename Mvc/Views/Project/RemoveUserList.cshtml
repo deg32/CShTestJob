@@ -1,0 +1,68 @@
+﻿@model ClassLibrary.Performer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RemoveUserList</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+
+                <td> Фамилия </td>
+                <td> Имя </td>
+                <td> Отчество </td>
+                <td> Email </td>
+            </tr>
+
+
+            @foreach (var x in ViewBag.Result)
+            {
+                <tr>
+
+                    <td>  @x.Surname </td>
+                    <td>  @x.Name </td>
+                    <td>  @x.Patronymic </td>
+                    <td>  @x.Email </td>
+                    <td>
+                        @using (Html.BeginForm("Edit", "Performer"))
+                        {
+                            <input type="Hidden" name="Id" id="Id" value="@x.Id">
+                          
+                        }
+                    </td>
+
+                    <td>
+                        @using (Html.BeginForm("RemovePervormersFromProject", "Project"))
+{
+    <input type="Hidden" name="performer_id" value="@x.Id">
+                              <input type="Hidden" name="project_id" value="@ViewBag.ProjectId">
+                            
+                                                                            <input type="submit" value=" Удалить исполнителя" />
+}
+                    </td>
+                </tr>
+
+
+            }
+
+
+        </table>
+
+
+   
+
+
+
+
+
+    </div>
+</body>
+</html>

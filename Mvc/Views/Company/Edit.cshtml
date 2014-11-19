@@ -1,0 +1,59 @@
+﻿@model ClassLibrary.Company
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Редактирование компании</title>
+</head>
+<body>
+    <div>
+
+        <table>
+            <tr>Текущая информация</tr>
+            <tr>
+                <td> @ViewBag.Result.Id </td>
+                <td> @ViewBag.Result.Name </td>
+                <td> @ViewBag.Result.Address </td>
+                <td> @ViewBag.Result.Email </td>
+            </tr>
+        </table>
+
+        @using (Html.BeginForm("SaveChanges", "Company"))
+        {
+            <input type="Hidden" name="Id" value="@ViewBag.Result.Id">
+
+            <p> @Html.LabelFor(x => x.Name) <input type="text" name="Name" value="@ViewBag.Result.Name"></p>
+            
+            @Html.ValidationMessageFor(x => x.Name);
+            
+            <p>  @Html.LabelFor(x => x.Address)<input type="text" name="Address" value="@ViewBag.Result.Address"></p>
+            
+            @Html.ValidationMessageFor(x => x.Address);
+            
+            <p>  @Html.LabelFor(x => x.Email)<input type="text" name="Email" value="@ViewBag.Result.Email"></p>
+           
+            <input type="submit" value="Сохранить изменения" />
+        }
+
+        @using (Html.BeginForm("Index", "Company"))
+        {
+
+            <input type="submit" value="Список компаний" />
+        }
+
+        @using (Html.BeginForm("Index", "Main"))
+        {
+
+            <input type="submit" value="На главную страницу" />
+        }
+
+
+    </div>
+</body>
+</html>

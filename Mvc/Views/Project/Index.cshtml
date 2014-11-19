@@ -1,0 +1,94 @@
+﻿
+@model ClassLibrary.Project
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @Html.ValidationMessage("err")
+    <div>
+        <table>
+            <tr>
+                
+                <td> Hазвание    </td>
+                <td> Дата начала </td>
+                <td> Дата завершения </td>
+                <td> Руководитель </td>
+                <td> Фирма заказчик </td>
+                <td> Фирма исполнитель </td>
+                <td> Исполнители </td>
+            </tr>
+
+            
+
+    @foreach ( var x in ViewBag.Result)
+{
+    <tr>
+     
+        <td>  @x.Project.Name </td>
+        <td>  @x.Project.StartDate </td>
+        <td>  @x.Project.FinishDate </td>
+        <td>  @x.ProjectLeader </td>
+        <td>  @x.CompanyCustomer </td>
+        <td>  @x.ProjectExecutor </td>
+        <td>  @x.ProjectPerformers </td>
+
+        <td>
+            @using (Html.BeginForm("Delete", "Project"))
+            {
+                <input type="Hidden" name="Id" id="Id" value="@x.Project.Id">
+                <input type="submit" value=" Удалить проект" />
+            }
+        </td>
+    
+
+      
+          <td>
+  
+         @using (Html.BeginForm("RemoveUserList", "Project"))
+{
+
+            <input type="Hidden" name="project_id" id="Id" value="@x.Project.Id">
+                    <input type="submit" value="Работа с исполнителями" />
+}
+             </td>
+    </tr>
+
+    }
+
+
+            <tr>
+                <td>
+                    @using (Html.BeginForm("SortByProjectName", "Project"))
+                    {
+                        
+                        <input type="submit" value=" Cортировать по названию " />
+                    }
+                </td>
+            </tr>
+</table>
+
+
+        @using (Html.BeginForm("Index", "Main"))
+        {
+
+            <input type="submit" value="На главную страницу" />
+        }
+
+        
+       
+
+
+
+
+    </div>
+</body>
+</html>

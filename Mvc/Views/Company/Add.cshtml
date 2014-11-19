@@ -1,0 +1,52 @@
+﻿@model ClassLibrary.Company
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Добавление компании</title>
+</head>
+<body>
+    
+    <div>
+
+      
+        @Html.ValidationMessage("err")
+
+        @using (Html.BeginForm("AddView", "Company"))
+        {
+
+            <p>  @Html.LabelFor(x => x.Name)  @Html.TextBoxFor(x => x.Name) *</p>
+            
+            @Html.ValidationMessageFor(x => x.Name);
+            
+            <p>  @Html.LabelFor(x => x.Address) @Html.TextBoxFor(x => x.Address) *</p>
+            
+            @Html.ValidationMessageFor(x => x.Address);
+                        
+            <p>  @Html.LabelFor(x => x.Email) @Html.TextBoxFor(x => x.Email) </p>
+
+            <input type="submit" value=" Добавить" />
+        }
+
+        @using (Html.BeginForm("Index", "Company"))
+        {
+
+            <input type="submit" value="Список компаний" />
+        }
+
+        @using (Html.BeginForm("Index", "Main"))
+        {
+
+            <input type="submit" value="На главную страницу" />
+        }
+
+
+    </div>
+</body>
+</html>

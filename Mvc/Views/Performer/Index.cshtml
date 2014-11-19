@@ -1,0 +1,74 @@
+﻿@model ClassLibrary.Performer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Список исполнителей</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                
+                <td> Фамилия </td>
+                <td> Имя </td>
+                <td> Отчество </td>
+                <td> Email </td>     
+            </tr>
+        
+ @foreach (var x in ViewBag.Result)
+{
+    <tr>
+        
+        <td>  @x.Surname </td>
+        <td>  @x.Name </td>
+        <td>  @x.Patronymic </td>
+        <td>  @x.Email </td>
+        <td>
+            @using (Html.BeginForm("Edit", "Performer"))
+            {
+                <input type="Hidden" name="Id" id="Id" value="@x.Id">
+                <input type="submit" value="Редактировать" />
+            }
+        </td>
+
+        <td>
+            @using (Html.BeginForm("Delete", "Performer"))
+            {
+                <input type="Hidden" name="Id" id="Id" value="@x.Id">
+                <input type="submit" value=" Удалить" />
+            }
+        </td>
+    </tr>
+    
+     
+}
+
+
+</table>
+
+        @using (Html.BeginForm("Add", "Performer"))
+        {
+         
+            <input type="submit" value="Добавить" />
+        }
+
+
+        @using (Html.BeginForm("Index", "Main"))
+        {
+
+            <input type="submit" value="На главную страницу" />
+        }
+
+
+            
+
+</div>
+</body>
+</html>

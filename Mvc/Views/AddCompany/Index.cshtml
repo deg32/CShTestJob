@@ -1,0 +1,29 @@
+﻿@model ClassLibrary.Company
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        Hello
+        @using (Html.BeginForm("Index", "AddCompany"))
+        {
+            <p>  @Html.LabelFor(x => x.Name)  @Html.TextBoxFor(x => x.Name)</p>
+            <p>  @Html.LabelFor(x => x.Address) @Html.TextBoxFor(x => x.Address)</p>
+            <p>  @Html.LabelFor(x => x.Email) @Html.TextBoxFor(x => x.Email) </p>
+            
+            <input type="submit" value=" Добавить" />
+
+        }
+
+    </div>
+</body>
+</html>

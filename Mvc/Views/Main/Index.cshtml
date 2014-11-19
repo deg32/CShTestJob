@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Главная страница</title>
+</head>
+<body>
+    <div>
+        
+
+
+        @using (Html.BeginForm("Add", "Performer"))
+        {
+          
+            <input type="submit" value="Добавить Исполнителя" />
+        }
+
+        @using (Html.BeginForm("Add", "Company"))
+        {
+
+            <input type="submit" value="Добавить компанию" />
+        }
+        @using (Html.BeginForm("AddView", "Project", FormMethod.Get))
+        {
+
+            <input type="submit" value="Добавить проект" />
+        }
+
+        @using (Html.BeginForm("Index", "Performer"))
+        {
+
+            <input type="submit" value="Список Исполнителей" />
+        }
+
+        @using (Html.BeginForm("Index", "Company"))
+        {
+
+            <input type="submit" value="Список компаний" />
+        }
+        @using (Html.BeginForm("Index", "Project"))
+        {
+
+            <input type="submit" value="Список проектов" />
+        }
+     
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿@model ClassLibrary.Company
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Список компаний</title>
+</head>
+<body>
+    <div>
+       
+            <table>
+                <tr>
+                
+                    <td> Название </td>
+                    <td> Адрес </td>
+                    <td> Email </td>
+                </tr>
+
+                @foreach (var x in ViewBag.Result)
+                {
+                    <tr>
+
+                        <td>  @x.Name </td>
+                        <td>  @x.Address </td>
+                        <td>  @x.Email </td>
+                        <td>
+                            @using (Html.BeginForm("Edit", "Company"))
+                            {
+                                <input type="Hidden" name="Id" id="Id" value="@x.Id">
+                                <input type="submit" value="Редактировать" />
+                            }
+                        </td>
+
+                        <td>
+                            @using (Html.BeginForm("Delete", "Company"))
+                            {
+                                <input type="Hidden" name="Id" id="Id" value="@x.Id">
+                                <input type="submit" value=" Удалить" />
+                            }
+                        </td>
+                    </tr>
+
+
+                }
+
+
+            </table>
+
+            @using (Html.BeginForm("AddView", "Company"))
+            {
+
+                <input type="submit" value="Добавить" />
+            }
+
+        @using (Html.BeginForm("Index", "Main"))
+        {
+
+            <input type="submit" value="На главную страницу" />
+        }
+         
+    </div>
+</body>
+</html>

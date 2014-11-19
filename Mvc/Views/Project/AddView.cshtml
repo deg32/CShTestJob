@@ -1,0 +1,112 @@
+﻿@model ClassLibrary.Project
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Добавление нового проекта</title>
+</head>
+<body>
+    @Html.ValidationMessage("err")
+    <div>
+        @using (Html.BeginForm("AddView", "Project", FormMethod.Post))
+        {
+
+
+
+            <p>  @Html.LabelFor(x => x.Name)  @Html.TextBoxFor(x => x.Name)</p>
+           
+             @Html.ValidationMessageFor(x => x.Name);
+          
+            
+            <p>  @Html.LabelFor(x => x.StartDate)  <input type="date" name="StartDate"/></p>
+            
+            @Html.ValidationMessageFor(x => x.StartDate);
+                        
+            <p>  @Html.LabelFor(x => x.FinishDate)  <input type="date" name="FinishDate" /></p>
+            
+            @Html.ValidationMessageFor(x => x.FinishDate);
+                   <p>  @Html.LabelFor(x => x.ProjectLeader)
+            
+            
+                    <select name="leaderid">
+                        @foreach (var p in ViewBag.Leaders) 
+                        {
+                        <option value="@p.Id">@p.Surname @p.Name @p.Patronymic </option>
+                        }
+                    </select>
+                   
+            </p>
+            @Html.ValidationMessageFor(x => x.ProjectLeader);
+            
+            <p>
+                    @Html.LabelFor(x => x.ProjectCustomer)
+            
+                <select name="custid">
+                    @foreach (var c in ViewBag.CompaniesCustomers)
+                    {
+                        <option value="@c.Id"> @c.Name </option>
+                    }
+                </select>
+
+            
+            
+            </p>    
+             <p>
+                    @Html.LabelFor(x => x.ProjectExecutor)
+            
+                 <select name="devid">
+                     @foreach (var c in ViewBag.CompaniesCustomers)
+                     {
+                         <option value="@c.Id"> @c.Name </option>
+                     }
+                 </select>
+
+            
+            
+            </p>  
+            
+            
+              <p>
+                    @Html.LabelFor(x => x.Performers)
+            
+                  <select name="perfids" multiple>
+                      @foreach (var c in ViewBag.Performers)
+                      {
+                          <option value="@c.Id"> @c.Surname @c.Name @c.Patronymic </option>
+                           
+                      }
+                  </select>
+                  @Html.ValidationMessageFor(x => x.Performers)
+            
+                 
+            </p>   
+                   
+            
+             <p>  @Html.LabelFor(x => x.Comment)  <textarea cols="40" rows="4" name="Comment"> </textarea></p>
+
+            <input type="submit" value=" Добавить" />
+            
+        }
+
+        @using (Html.BeginForm("Index", "Project"))
+        {
+
+            <input type="submit" value="Список проектов" />
+        }
+
+        @using (Html.BeginForm("Index", "Main"))
+        {
+
+            <input type="submit" value="На главную страницу" />
+        }
+
+
+</div>
+</body>
+</html>

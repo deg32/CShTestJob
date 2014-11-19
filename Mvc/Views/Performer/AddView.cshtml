@@ -1,0 +1,54 @@
+﻿@model ClassLibrary.Performer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Добавление исполнителя</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("AddView", "Performer"))
+        {
+
+            <p>  @Html.LabelFor(x => x.Name)  @Html.TextBoxFor(x => x.Name)*</p>
+            
+            @Html.ValidationMessageFor(x => x.Name);
+            
+            <p>  @Html.LabelFor(x => x.Surname) @Html.TextBoxFor(x => x.Surname)*</p>
+            
+            @Html.ValidationMessageFor(x => x.Surname);
+            
+            <p>  @Html.LabelFor(x => x.Patronymic) @Html.TextBoxFor(x => x.Patronymic)*</p>
+           
+             @Html.ValidationMessageFor(x => x.Patronymic);
+            
+            <p>  @Html.LabelFor(x => x.Email) @Html.TextBoxFor(x => x.Email) </p>
+            
+          
+            
+            <input type="submit" value=" Добавить" />
+        }
+
+        @using (Html.BeginForm("Index", "Performer"))
+        {
+
+            <input type="submit" value="Список исполнителей" />
+        }
+
+
+        @using (Html.BeginForm("Index", "Main"))
+        {
+
+            <input type="submit" value="На главную страницу" />
+        }
+
+
+    </div>
+</body>
+</html>

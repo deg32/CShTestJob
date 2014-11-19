@@ -1,0 +1,58 @@
+﻿@model ClassLibrary.Performer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Редактирование исполнителя</title>
+</head>
+<body>
+    <div>
+            
+           <table>     
+            <tr>
+                <td> @ViewBag.Result.Id </td>
+                <td> @ViewBag.Result.Surname </td>
+                <td> @ViewBag.Result.Name </td>
+                <td> @ViewBag.Result.Patronymic </td>
+                <td> @ViewBag.Result.Email </td>
+            </tr>
+               </table>
+
+                   @using (Html.BeginForm("SaveChanges", "Performer"))
+{
+                        <input type="Hidden" name="Id" value="@ViewBag.Result.Id">
+                      
+                        <p> @Html.LabelFor(x => x.Name) <input type="text" name="Name" value="@ViewBag.Result.Name"></p>
+                       
+                        @Html.ValidationMessageFor(x => x.Name);
+                       
+                       <p>  @Html.LabelFor(x => x.Surname)<input type="text" name="Surname" value="@ViewBag.Result.Surname"></p>
+    
+                        @Html.ValidationMessageFor(x => x.Surname);
+                       
+                       <p>  @Html.LabelFor(x => x.Patronymic) <input type="text" name="Patronymic" value="@ViewBag.Result.Patronymic"></p>
+                       
+                        @Html.ValidationMessageFor(x => x.Patronymic);
+                       
+                       <p>  @Html.LabelFor(x => x.Email)<input type="text" name="Email" value="@ViewBag.Result.Email"></p>
+                       
+                       <p>  @Html.LabelFor(x => x.isProjectLeader) @Html.CheckBoxFor(x => x.isProjectLeader)</p>
+
+                       <input type="submit" value="Сохранить изменения" />
+                   }
+
+        @using (Html.BeginForm("Index", "Main"))
+        {
+
+            <input type="submit" value="На главную страницу" />
+        }
+
+</div>
+</body>
+</html>

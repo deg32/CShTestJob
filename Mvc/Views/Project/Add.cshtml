@@ -1,0 +1,45 @@
+﻿@model ClassLibrary.Project
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ДОбавление проекта</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Add", "Project"))
+        {
+
+            
+            
+            <p>  @Html.LabelFor(x => x.ProjectName)  @Html.TextBoxFor(x => x.ProjectName)</p>
+            <p>  @Html.LabelFor(x => x.StartDate) <input type="date" name="StartDate"></p>
+            <p>  @Html.LabelFor(x => x.FinishDate) <input type="date" name="FinishDate"></p>
+            <p>  @Html.LabelFor(x => x.ProjectLeader)   
+                  <select>
+                       
+                      
+                             <option>ViewBag.Result </option>
+                       
+                  </select>
+            </p>
+            
+           
+            <input type="submit" value=" Добавить" />
+        }
+
+        
+
+
+
+
+
+    </div>
+</body>
+</html>
